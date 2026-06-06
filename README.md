@@ -48,7 +48,7 @@ Debe ser posible enviarle los siguientes mensajes a cada objeto que representa a
 ### Test con dos dependencias
 
 Armar un test en el que hay que se definen dos dependencias: deportes (45 empleados) y cultura (31 empleados).
-	
+
 En este test debe definirse un rodado al que llamaremos _cachito_; o sea, definir `var cachito = ...`.
 Este rodado debe ser un Corsa de color rojo.
 	

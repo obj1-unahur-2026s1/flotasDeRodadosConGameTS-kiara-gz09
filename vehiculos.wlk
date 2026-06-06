@@ -27,7 +27,12 @@ class Kwid {
       return 110
   }
   method color() = "Azul"
-  method peso() {if (tanqueAd)  1200 + pesoTanque else return 1200}
+  method peso() {
+    if (tanqueAd)
+      return 1200 + pesoTanque 
+    else 
+      return 1200
+  }
   method ponerTanque() {tanqueAd = true}
   method sacarTanque() {tanqueAd = false}
 }
@@ -48,15 +53,11 @@ class Trafic{
 }
 
 class AutoEspecial {
-  const capacidad
-  const velocidadMax
-  const peso
-  const color
+  const property capacidad
+  const property velocidadMax
+  const property peso
+  const property color
 
-  method capacidad() = capacidad
-  method velocidadMax() = velocidadMax
-  method peso() = peso
-  method color() = color
 }
 
 //MOTORES

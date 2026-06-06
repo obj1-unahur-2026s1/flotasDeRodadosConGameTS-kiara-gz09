@@ -1,0 +1,67 @@
+import vehiculos.*
+import dependencia.*
+
+describe "Tests Parte 1" {
+    var deportes
+    var cultura
+
+    var cachito = new Corsa(color ="Rojo" )
+    var corsaAzul = new Corsa(color = "Azul")
+    var corsaVerde = new Corsa(color = "Verde")
+    var kwidT1 = new Kwid(tanqueAd = true)
+    var especial1 = new AutoEspecial(capacidad = 5, velocidadMax = 160, peso = 1200, color = "Beige")
+        
+    var kwidT2 = new Kwid(tanqueAd = true)
+    var kwidT3 = new Kwid(tanqueAd = true)
+    var kwid1 = new Kwid()
+    var traffic = new Trafic(interior = popular, motor = bataton)
+        
+    method initialize() {
+        deportes = new Dependencia(empleados = 45)
+        cultura = new Dependencia(empleados = 31)
+        
+        deportes.agregarAFlota(cachito)
+        deportes.agregarAFlota(corsaAzul)
+        deportes.agregarAFlota(corsaVerde)
+        deportes.agregarAFlota(kwidT1)
+        deportes.agregarAFlota(especial1)
+
+        cultura.agregarAFlota(cachito)
+        cultura.agregarAFlota(kwidT2)
+        cultura.agregarAFlota(kwidT3)
+        cultura.agregarAFlota(kwid1)
+        cultura.agregarAFlota(traffic)
+    }
+
+    test "Deportes: El peso total de la flota es " {
+        assert.equals(6450, deportes.pesoTotalFlota())
+  }
+    test "Deportes: Capacidad total color azul" {
+        assert.equals(7, deportes.capacidadTotalEnColor("Azul"))
+  }
+    test "Deportes: El rodado mas rapido es Beige" {
+        assert.equals("Beige", deportes.colorDelRodadoMasRapido())
+    }
+    test "Deportes: Es grande" {
+        assert.that(deportes.esGrande())
+    }
+    test "Deportes: La capacidad faltante es 25" {
+        assert.equals(25, deportes.capacidadFaltante())
+    }
+    test "Cultura: El peso total de la flota es 10700" {
+        assert.equals(10700, cultura.pesoTotalFlota())
+  }
+    test "Cultura: Capacidad total color azul es 10" {
+        assert.equals(10, cultura.capacidadTotalEnColor("Azul"))
+  }
+    test "Cultura: El rodado mas rapido es Beige" {
+            assert.equals("Beige", deportes.colorDelRodadoMasRapido())
+    }
+    test "Cultura: No es grande" {
+        assert.notThat(cultura.esGrande())
+    }
+    test "Cultura: La capacidad faltante es " {
+        assert.equals(5, cultura.capacidadFaltante())
+    }
+
+}

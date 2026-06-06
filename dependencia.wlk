@@ -2,7 +2,7 @@ import vehiculos.*
 
 class Dependencia {
     const flotaRodados = []
-    var empleados = 1
+    var empleados
 
     method cantEmpleados() = empleados
     method cambiarCantEmpleados(cantidad) {empleados = cantidad}
