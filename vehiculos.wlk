@@ -1,3 +1,4 @@
+//VEHICULOS
 class Corsa {
   var color
 
@@ -11,7 +12,7 @@ class Corsa {
 
 class Kwid {
   var tanqueAd = false
-  const property pesoTanque = 150 
+  const pesoTanque = 150 
 
   method capacidad(){
     if (tanqueAd)  
@@ -26,9 +27,9 @@ class Kwid {
       return 110
   }
   method color() = "Azul"
-  method peso() = 1200 + pesoTanque
+  method peso() {if (tanqueAd)  1200 + pesoTanque else return 1200}
   method ponerTanque() {tanqueAd = true}
-  method sacarTanque() {tanqueAd = true}
+  method sacarTanque() {tanqueAd = false}
 }
 
 class Trafic{
@@ -44,6 +45,18 @@ class Trafic{
   method velocidadMax() = motor.velocidadMax()  
   method peso() = 4000 + interior.peso() + motor.peso() 
   method color() = "Blanco"
+}
+
+class AutoEspecial {
+  const capacidad
+  const velocidadMax
+  const peso
+  const color
+
+  method capacidad() = capacidad
+  method velocidadMax() = velocidadMax
+  method peso() = peso
+  method color() = color
 }
 
 //MOTORES
