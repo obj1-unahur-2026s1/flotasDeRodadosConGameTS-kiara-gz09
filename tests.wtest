@@ -1,5 +1,6 @@
 import vehiculos.*
 import dependencia.*
+import pedidos.*
 
 describe "Tests Etapa 1" {
     var deportes
