@@ -1,8 +1,11 @@
 import vehiculos.*
+import pedidos.*
+
 
 class Dependencia {
     const flotaRodados = []
     var empleados
+    const pedidos = []
 
     method cantEmpleados() = empleados
     method cambiarCantEmpleados(cantidad) {empleados = cantidad}
@@ -23,24 +26,17 @@ class Dependencia {
     method capacidadFaltante() = empleados - self.capacidadFlota() 
     method capacidadFlota() = flotaRodados.sum{f => f.capacidad()} 
     method esGrande() = (empleados >= 40) && (flotaRodados.size() >= 5)
-}
-
-class Pedido {
-    var property distancia
-    var property tiempoMax
-    var property cantPasajerosATransportar
-    const coloresIncompatibles = #{}   
-
-    method coloresIncompatibles() = coloresIncompatibles
-    method agregarColorIncompatible(unColor) {coloresIncompatibles.add(unColor)}
-    method sacarColorIncompatible(unColor) {
-        if (coloresIncompatibles.contains(unColor)) 
-            coloresIncompatibles.remove(unColor)}
-    method velocidadRequerida() = distancia / tiempoMax
-    method elAuto_PuedeHacerElPedido(unAuto) {
-        return  self.autoCumpleVelocidad(unAuto) && self.autoCumpleCapacidad(unAuto) && self.autoNoEsCompatible(unAuto)
+    method registroPedidos() = pedidos 
+    method agregarPedido(unPedido) {
+      pedidos.add(unPedido)
     }
-    method autoCumpleVelocidad(unAuto) = unAuto.velocidadMax() >= self.velocidadRequerida() + 10  
-    method autoCumpleCapacidad(unAuto) = unAuto.capacidad() >=  self.cantPasajerosATransportar()
-    method autoNoEsCompatible(unAuto) = !coloresIncompatibles.contains(unAuto.color()) 
+    method quitarPedido(unPedido) {
+        if (pedidos.contains(unPedido))
+            pedidos.remove(unPedido)
+    }
+    method totalPasajerosEnPedidosRegistrados() = pedidos.sum{r => r.cantPasajerosATransportar()} 
+    method pedidosNoSatisfechos() = pedidos.filter {p => flotaRodados.none { a => p.elAuto_PuedeHacerElPedido(a)}}
+    method elColor_EsIncompatibleConTodosLosPedidos(color) =  pedidos.all{p => p.coloresIncompatibles().contains(color)}
+    method relajar() {pedidos.map{p => p.relajar()}}
 }
+
