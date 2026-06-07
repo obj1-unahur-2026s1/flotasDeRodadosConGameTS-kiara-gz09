@@ -1,7 +1,7 @@
 import vehiculos.*
 import dependencia.*
 
-describe "Tests Parte 1" {
+describe "Tests Etapa 1" {
     var deportes
     var cultura
 
@@ -64,4 +64,30 @@ describe "Tests Parte 1" {
         assert.equals(5, cultura.capacidadFaltante())
     }
 
+}
+
+describe "Test Etapa 2" {
+    var pedido1
+    var cachito = new Corsa(color ="Rojo" )
+
+    method initialize() {
+        pedido1 = new Pedido(distancia= 950, tiempoMax = 8, cantPasajerosATransportar = 4)
+        pedido1.agregarColorIncompatible("Azul")
+        pedido1.agregarColorIncompatible("Negro")
+    }
+    test "Cachito rojo puede hacer el pedido1" {
+        assert.that(pedido1.elAuto_PuedeHacerElPedido(cachito))
+    }
+    test "Cachito rojo ya no puede hacer pedido1" {
+        pedido1.agregarColorIncompatible("Rojo")
+        assert.notThat(pedido1.elAuto_PuedeHacerElPedido(cachito))
+    }
+    test "Cachito no puede hacer pedido1 porque son mas de 4 pasajeros" {
+        pedido1.cantPasajerosATransportar(6)
+        assert.notThat(pedido1.elAuto_PuedeHacerElPedido(cachito))
+    }
+    test "Cachito no puede hacer pedido1 porque no cumple la vlocidad requerida" {
+        pedido1.tiempoMax(6)
+        assert.notThat(pedido1.elAuto_PuedeHacerElPedido(cachito))
+    }
 }

@@ -38,9 +38,9 @@ class Pedido {
             coloresIncompatibles.remove(unColor)}
     method velocidadRequerida() = distancia / tiempoMax
     method elAuto_PuedeHacerElPedido(unAuto) {
-        return  self.autoCumpleVelocidad(unAuto) && self.autoCumpleCapacidad(unAuto) && !self.autoNoEsCompatible(unAuto)
+        return  self.autoCumpleVelocidad(unAuto) && self.autoCumpleCapacidad(unAuto) && self.autoNoEsCompatible(unAuto)
     }
     method autoCumpleVelocidad(unAuto) = unAuto.velocidadMax() >= self.velocidadRequerida() + 10  
     method autoCumpleCapacidad(unAuto) = unAuto.capacidad() >=  self.cantPasajerosATransportar()
-    method autoNoEsCompatible(unAuto) = coloresIncompatibles.contains(unAuto) 
+    method autoNoEsCompatible(unAuto) = !coloresIncompatibles.contains(unAuto.color()) 
 }
