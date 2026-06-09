@@ -8,5 +8,10 @@ program CorsaGame {
     game.width(10)
     game.height(10)
     game.addVisualCharacter(cachito)
+
+    keyboard.r().onPressDo {cachito.cambiarColor(rojo)}
+    keyboard.a().onPressDo {cachito.cambiarColor(azul)}
+    keyboard.v().onPressDo {cachito.cambiarColor(verde)}
+    
     game.start()
 }

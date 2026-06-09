@@ -26,6 +26,14 @@ object rojo {
   method image() = "autitorojo.png"
 }
 
+object azul {
+  method image() = "autitoAzul.png" 
+}
+
+object verde {
+  method image() = "autitoVerde.png" 
+}
+
 class Kwid {
   var tanqueAd = false
   const pesoTanque = 150 
