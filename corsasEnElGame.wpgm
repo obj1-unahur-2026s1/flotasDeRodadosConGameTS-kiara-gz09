@@ -1,0 +1,12 @@
+import wollok.game.*
+
+import vehiculos.*
+
+program CorsaGame {
+    const cachito = new Corsa(color = rojo)
+    game.title("Corsita")
+    game.width(10)
+    game.height(10)
+    game.addVisualCharacter(cachito)
+    game.start()
+}

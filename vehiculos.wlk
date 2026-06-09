@@ -1,13 +1,29 @@
+
+
 //VEHICULOS
 class Corsa {
   var color
+  const posiciones = []
+  var property position = game.origin() //Porque prorperty
 
   method capacidad() = 4
   method velocidadMax() = 150
   method color() = color
   method cambiarColor(nuevoColor) {color = nuevoColor}
   method peso() = 1300
+  method moverA(nuevaPosicion) {
+    position = nuevaPosicion
+    posiciones.add(nuevaPosicion)
+  }
+  method pasoPor(unaPosicion) = posiciones.contains(unaPosicion)
+  method pasoPorFilaNumero(unNumero) =  posiciones.any{p => p.x() == unNumero}
+  method recorrioFilas(listaNumeros) = listaNumeros.all{n => self.pasoPorFilaNumero(n)} 
+  method image() = color.image() 
+}
 
+//COLORES
+object rojo {
+  method image() = "autitorojo.png"
 }
 
 class Kwid {
